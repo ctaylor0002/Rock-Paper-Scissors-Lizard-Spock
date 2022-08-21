@@ -21,9 +21,7 @@ while valid_input == False:
     player_count = input("How many players will be participating? (0-2) ")
 
     if player_count == '0' or player_count == '1' or player_count == '2':
-        print("Game initailizing...")
         the_game = Game(player_count)
-        valid_input = True
     else:
         print("Invalid player count. Please try again.")
     
