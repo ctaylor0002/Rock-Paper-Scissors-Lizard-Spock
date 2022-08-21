@@ -1,5 +1,5 @@
 from human import Human
-from bot import Bot
+# from bot import Bot
 from player import Player
 
 
