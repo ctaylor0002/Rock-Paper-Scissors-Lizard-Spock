@@ -22,6 +22,7 @@ while valid_input == False:
 
     if player_count == '0' or player_count == '1' or player_count == '2':
         the_game = Game(player_count)
+        valid_input = True
     else:
         print("Invalid player count. Please try again.")
     
