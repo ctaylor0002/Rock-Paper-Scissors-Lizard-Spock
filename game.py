@@ -12,7 +12,7 @@ class Game:
         valid_input = False
         while valid_input == False:
             player_count = input("How many players will be participating? (0-2) ")
-
+            
             if player_count == '0' or player_count == '1' or player_count == '2':
                 self.player_count = player_count
                 print("Game initializing...")
@@ -64,6 +64,8 @@ class Game:
             print(f'{rule}')
             sleep(1)
 
+        print('\n')
+
     def run_round_human(self, player):
         # Run player 1 pick
         picked_action = False
@@ -82,6 +84,7 @@ class Game:
     def run_round_bot(self, player):
         action = player.action_list[random.randrange(0,4)]
         player.current_action = action
+        sleep(1)
         print(f"{player.player_name} has picked an action!")
 
     def run_round(self):
@@ -110,8 +113,9 @@ class Game:
         sleep(1)
 
         print(f"{self.player1.player_name} has picked... {self.player1.current_action}")
+        sleep(1)
         print(f"{self.player2.player_name} has picked... {self.player2.current_action}")
-
+        sleep(1)
 
     def run_game(self):
         # Hard code the victories until I can think of a better method
@@ -162,12 +166,12 @@ class Game:
                 elif player2_action == "Scissors" or player2_action == "Rock":
                     print(f"{self.player1.player_name} wins this round!")
                     self.player1.rounds_won += 1
-            
+            sleep(1)
             if self.player1.rounds_won == 2:
-                print(f"{self.player1.player_name} has won the best of 3!")
+                print(f"\n{self.player1.player_name} has won the best of 3!")
                 finsihed_game = True
             elif self.player2.rounds_won == 2:
-                print(f"{self.player2.player_name} has won the best of 3!")
+                print(f"\n{self.player2.player_name} has won the best of 3!")
                 finsihed_game = True
                 #play_again = False
 
