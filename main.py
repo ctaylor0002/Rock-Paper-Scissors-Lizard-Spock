@@ -15,6 +15,7 @@
 # (10 points): As a player, I want the option of a single player (human vs AI) or a multiplayer (human vs human) game.
 
 from game import Game
+from human import Human
 
 valid_input = False
 while valid_input == False:
