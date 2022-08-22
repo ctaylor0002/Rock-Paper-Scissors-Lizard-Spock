@@ -17,7 +17,7 @@
 from game import Game
 
 the_game = Game()
-the_game.run_round()
+the_game.run_game()
 
 
     

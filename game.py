@@ -54,7 +54,7 @@ class Game:
         Game.display_rules(self)
 
     def display_rules(self):
-        rule_list = ["Scissors cuts Paper", "Paper covers Rock", "Rock crushes Lizard", "Lizard poisons Spock", "Spock smashes Scissors", "Scissors decapitates Lizard", "Lizard eats Paper", "Paper disproves Spock", "Spock vaporizes Rock"]
+        rule_list = ["Rock crushes Scissors", "Scissors cuts Paper", "Paper covers Rock", "Rock crushes Lizard", "Lizard poisons Spock", "Spock smashes Scissors", "Scissors decapitates Lizard", "Lizard eats Paper", "Paper disproves Spock", "Spock vaporizes Rock"]
         print(f'\nContestant 1, {self.player1.player_name} will be facing off against contestant 2, {self.player2.player_name} in a best of 3 battle of Rock Paper Scissors Lizard Spock!')
         sleep(1)
         print('\nHere are the rules...')
@@ -111,6 +111,69 @@ class Game:
 
         print(f"{self.player1.player_name} has picked... {self.player1.current_action}")
         print(f"{self.player2.player_name} has picked... {self.player2.current_action}")
+
+
+    def run_game(self):
+        # Hard code the victories until I can think of a better method
+        finsihed_game = False
+
+        while finsihed_game == False:
+            
+            Game.run_round(self)
+
+            player1_action = self.player1.current_action
+            player2_action = self.player2.current_action
+            if self.player1.current_action == self.player2.current_action:
+                print('Its a tie!')
+                continue
+        
+            if self.player1.current_action == "Rock":
+                if player2_action == "Paper" or player2_action == "Spock":
+                    print(f"{self.player2.player_name} wins this round!")
+                    self.player2.rounds_won += 1
+                elif player2_action == "Scissors" or player2_action == "Lizard":
+                    print(f"{self.player1.player_name} wins this round!")
+                    self.player1.rounds_won += 1
+            elif self.player1.current_action == "Paper":
+                if player2_action == "Scissors" or player2_action == "Lizard":
+                    print(f"{self.player2.player_name} wins this round!")
+                    self.player2.rounds_won += 1
+                elif player2_action == "Rock" or player2_action == "Spock":
+                    print(f"{self.player1.player_name} wins this round!")
+                    self.player1.rounds_won += 1
+            elif self.player1.current_action == "Scissors":
+                if player2_action == "Rodck" or player2_action == "Spock":
+                    print(f"{self.player2.player_name} wins this round!")
+                    self.player2.rounds_won += 1
+                elif player2_action == "Paper" or player2_action == "Lizard":
+                    print(f"{self.player1.player_name} wins this round!")
+                    self.player1.rounds_won += 1
+            elif self.player1.current_action == "Lizard":
+                if player2_action == "Rock" or player2_action == "Scissors":
+                    print(f"{self.player2.player_name} wins this round!")
+                    self.player2.rounds_won += 1
+                elif player2_action == "Paper" or player2_action == "Spock":
+                    print(f"{self.player1.player_name} wins this round!")
+                    self.player1.rounds_won += 1
+            elif self.player1.current_action == "Spock":
+                if player2_action == "Lizard" or player2_action == "Paper":
+                    print(f"{self.player2.player_name} wins this round!")
+                    self.player2.rounds_won += 1
+                elif player2_action == "Scissors" or player2_action == "Rock":
+                    print(f"{self.player1.player_name} wins this round!")
+                    self.player1.rounds_won += 1
+            
+            if self.player1.rounds_won == 2:
+                print(f"{self.player1.player_name} has won the best of 3!")
+                finsihed_game = True
+            elif self.player2.rounds_won == 2:
+                print(f"{self.player2.player_name} has won the best of 3!")
+                finsihed_game = True
+                #play_again = False
+
+                #while play_again == False
+                #    play_again_coice = input("Would you like to play again? y/n")
+                #    if play_again_coice == 'y':
 
 
 
