@@ -2,6 +2,7 @@ from human import Human
 from bot import Bot
 from player import Player
 from time import sleep
+import random
 
 
 
@@ -66,18 +67,21 @@ class Game:
         # Run player 1 pick
         picked_action = False
         while picked_action == False:
-            player1_picked_action = input(f"{player}, please pick an action. (Rock, Paper, Scissors, Lizard, Spock) ")
-            for action in self.player1.action_list:
-                if player1_picked_action.title() == action:
+            player_picked_action = input(f"{player.player_name}, please pick an action. (Rock, Paper, Scissors, Lizard, Spock) ")
+            for action in player.action_list:
+                if player_picked_action.title() == action:
                     picked_action = True
-                    self.player1.current_action = player1_picked_action.title()
+                    player.current_action = player_picked_action.title()
                     break
-            if self.player1.current_action == "":
+            if player.current_action == "":
                 print("Invalid action. Please try again...")
         
         
 
-    #def run_round_bot(self):
+    def run_round_bot(self, player):
+        action = player.action_list[random.randrange(0,4)]
+        player.current_action = action
+        print(f"{player.player_name} has picked an action!")
 
 
 
