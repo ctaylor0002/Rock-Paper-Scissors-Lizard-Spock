@@ -19,9 +19,9 @@ class Game:
 
             if player_count == '0':
                 # Create the two bots to battle eachother
-                player1 = Bot()
+                self.player1 = Bot()
                 
-                player2 = Bot()
+                self.player2 = Bot()
                 
                 valid_input = True
 
@@ -39,13 +39,13 @@ class Game:
             elif player_count == "2":
                 # Create a Human based on the username inputted
                 player1_name = input("Please input your username. ")
-                player1 = Human(player1_name)
-                print(f"Player 1 created... Welcome {player1.player_name}!")
+                self.player1 = Human(player1_name)
+                print(f"Player 1 created... Welcome {self.player1.player_name}!")
                 
                 # Create a Human based on the username inputted
                 player2_name = input("Please input your username. ")
-                player2 = Human(player2_name)
-                print(f"Player 2 created... Welcome {player2.player_name}!")
+                self.player2 = Human(player2_name)
+                print(f"Player 2 created... Welcome {self.player2.player_name}!")
 
                 valid_input = True
             else:
@@ -58,7 +58,8 @@ class Game:
         print(f'\nContestant 1, {self.player1.player_name} will be facing off against contestant 2, {self.player2.player_name} in a best of 3 battle of Rock Paper Scissors Lizard Spock!')
         sleep(1)
         print('\nHere are the rules...')
-        
+        sleep(1)
+
         for rule in rule_list:
             print(f'{rule}')
             sleep(1)
@@ -83,7 +84,33 @@ class Game:
         player.current_action = action
         print(f"{player.player_name} has picked an action!")
 
+    def run_round(self):
+        
+        if self.player1.player_type == 'human':
+            Game.run_round_human(self, self.player1)
+        else:
+            Game.run_round_bot(self, self.player1)
 
+        if self.player2.player_type == 'human':
+            Game.run_round_human(self, self.player2)
+        else:
+            Game.run_round_bot(self, self.player2)
+
+        print('\nRock!')
+        sleep(1)
+        print('Paper!')
+        sleep(1)
+        print('Scissors!')
+        sleep(1)
+        print('Lizard!')
+        sleep(1)
+        print('Spock!')
+        sleep(1)
+        print('Shoot!\n')
+        sleep(1)
+
+        print(f"{self.player1.player_name} has picked... {self.player1.current_action}")
+        print(f"{self.player2.player_name} has picked... {self.player2.current_action}")
 
 
 
