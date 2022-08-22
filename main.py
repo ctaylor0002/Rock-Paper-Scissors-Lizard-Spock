@@ -17,6 +17,7 @@
 from game import Game
 
 the_game = Game()
+#the_game.run_round_human(the_game.player1.player_name)
 
     
 

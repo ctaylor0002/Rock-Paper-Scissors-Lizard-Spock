@@ -27,11 +27,11 @@ class Game:
             elif player_count == "1":
                 # Create a Human based on the username inputted
                 player1_name = input("Please input your username. ")
-                player1 = Human(player1_name)
-                print(f"Player 1 created... Welcome {player1.player_name}!")
+                self.player1 = Human(player1_name)
+                print(f"Player 1 created... Welcome {self.player1.player_name}!")
                 
                 # Create a bot
-                player2 = Bot()
+                self.player2 = Bot()
 
                 valid_input = True
             
@@ -50,17 +50,38 @@ class Game:
             else:
                 print("Invalid player count. Please try again.")
 
-        Game.display_rules(self, player1.player_name, player2.player_name)
+        Game.display_rules(self)
 
-    def display_rules(self, player1, player2):
+    def display_rules(self):
         rule_list = ["Scissors cuts Paper", "Paper covers Rock", "Rock crushes Lizard", "Lizard poisons Spock", "Spock smashes Scissors", "Scissors decapitates Lizard", "Lizard eats Paper", "Paper disproves Spock", "Spock vaporizes Rock"]
-        print(f'\nContestant 1, {player1} will be facing off against contestant 2, {player2} in a best of 3 battle of Rock Paper Scissors Lizard Spock!')
+        print(f'\nContestant 1, {self.player1.player_name} will be facing off against contestant 2, {self.player2.player_name} in a best of 3 battle of Rock Paper Scissors Lizard Spock!')
         sleep(1)
         print('\nHere are the rules...')
         
         for rule in rule_list:
             print(f'{rule}')
             sleep(1)
+
+    def run_round_human(self, player):
+        # Run player 1 pick
+        picked_action = False
+        while picked_action == False:
+            player1_picked_action = input(f"{player}, please pick an action. (Rock, Paper, Scissors, Lizard, Spock) ")
+            for action in self.player1.action_list:
+                if player1_picked_action.title() == action:
+                    picked_action = True
+                    self.player1.current_action = player1_picked_action.title()
+                    break
+            if self.player1.current_action == "":
+                print("Invalid action. Please try again...")
+        
+        
+
+    #def run_round_bot(self):
+
+
+
+
 
 
     #def create_human_object(player_name):
