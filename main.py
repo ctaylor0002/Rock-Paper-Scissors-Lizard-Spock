@@ -15,17 +15,9 @@
 # (10 points): As a player, I want the option of a single player (human vs AI) or a multiplayer (human vs human) game.
 
 from game import Game
-from human import Human
 
-valid_input = False
-while valid_input == False:
-    player_count = input("How many players will be participating? (0-2) ")
+the_game = Game()
 
-    if player_count == '0' or player_count == '1' or player_count == '2':
-        the_game = Game(player_count)
-        valid_input = True
-    else:
-        print("Invalid player count. Please try again.")
     
 
 
